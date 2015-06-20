@@ -7,20 +7,29 @@
   </head>
 
   <body>
-    <a href="#" id="clear">Clear completed</a>
+    <a href="#" id="clear" ng-click="clearCompleted()">
+      Clear completed
+    </a>
     <p>
-      <input type="checkbox" id="mark-all" />
+      <input type="checkbox" ng-model="allDone" ng-click="markAll()" />
 Mark All
       </p>
 
       <ul>
-        <li ng-repeat="todo in todos" ng-class="{ done: todo.done }">
-        <input type="checkbox">
-        {{todo.action}}
+        <li ng-repeat="todo in todos"
+            ng-class="{done: todo.done, q1: todo.important}"
+            ng-dblclick="todo.editing = !todo.editing">
+        <input type="checkbox" ng-model="todo.done">
+          <span ng-hide="todo.editing">
+            {{todo.action}}
+          </span>
+          <span ng-show="todo.editing">
+            <input ng-model="todo.action" ng-keyup="$event.which === 13 && (todo.editing = false)">
+          </span>
         </li>
       </ul>
       
-      {{todos.length}}
+      Total: {{todos.length}}
 
     <script src="script.js"></script>
   </body>
