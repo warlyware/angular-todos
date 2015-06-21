@@ -49,7 +49,8 @@ h1, h3 {
 }
 
 body {
-  background-color: black; 
+  background-color: black;
+  text-align: center;
 }
 
 li {
@@ -57,11 +58,16 @@ li {
   padding: 10px;
   border-radius: 20px;
   margin-top: 5px;
+  margin-left: 0px;
+  padding-left: 25px;
+  text-align: left; 
 }
 
 ul {
-  padding-left: 0px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 20px;
   width: 200px;
   list-style: none;
+  padding-left: -10px;
 }

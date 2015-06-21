@@ -2,21 +2,19 @@
 <html ng-app="todosApp" ng-controller="todoController">
 
   <head>
-    <script data-require="angular.js@1.4.1" data-semver="1.4.1" src="https://code.angularjs.org/1.4.1/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.min.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
+  
     <a href="#" id="clear" ng-click="clearCompleted()">
       Clear completed
     </a>
-    <p>
-      <input type="checkbox" ng-model="allDone" ng-click="markAll()" />
-Mark All
-      </p>
-
+    <p><input type="checkbox" ng-model="allDone"/>Mark All</p>
+    <p><input type="text" ng-model="search"/></p>
       <ul>
-        <li ng-repeat="todo in todos"
+        <li ng-repeat="todo in todos | filter: search"
             ng-class="{done: todo.done, q1: todo.important}"
             ng-dblclick="todo.editing = !todo.editing">
         <input type="checkbox" ng-model="todo.done">
@@ -28,8 +26,11 @@ Mark All
           </span>
         </li>
       </ul>
-      
-      Total: {{todos.length}}
+
+      <p><input placeholder="enter the secret"
+                ng-model="secret"></p>
+      {{secretWord}}
+      <p>Total: {{todos.length}}</p>
 
     <script src="script.js"></script>
   </body>
